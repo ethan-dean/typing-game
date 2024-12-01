@@ -5,8 +5,16 @@
 	scroll-behavior: smooth;
 }
 
+@font-face {
+	font-family: 'Better-VCR';
+	src: url('../fonts/Better-VCR.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
 body{
 	min-height: 100vh;
+	font-family: 'Better-VCR', monospace;
 }
 
 .login-container {
@@ -33,6 +41,7 @@ body{
 	padding: 8px 10px;
 	display: flex;
 	align-items: center;
+	font-size: 12px;
 }
 
 .tab-container-active {
@@ -102,10 +111,11 @@ body{
 		border-left: none;
 		border-right: none;
 		border-bottom: 2px solid rgb(255, 255, 255);
-		font-size: 18px;
+		font-size: 14px;
 		color: rgb(255, 255, 255);
 		padding: 20px 45px 20px 20px;
 		box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+		font-family: 'Better-VCR', monospace;
 }
 
 .input-group input:focus {
@@ -133,7 +143,8 @@ body{
 	font-size: 20px;
 	border-radius: 25px;
 	cursor: pointer;
-	font-size: 16px;
+	font-size: 20px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+	font-family: 'Better-VCR', monospace;
 }
 

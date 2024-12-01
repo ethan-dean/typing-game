@@ -5,6 +5,13 @@
 	scroll-behavior: smooth;
 }
 
+@font-face {
+	font-family: 'Better-VCR';
+	src: url('../fonts/Better-VCR.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
 body {
 	min-height: 100vh;
 }
@@ -66,6 +73,7 @@ body {
 	cursor: pointer;
 	font-size: 16px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+	font-family: 'Better-VCR', monospace;
 }
 
 

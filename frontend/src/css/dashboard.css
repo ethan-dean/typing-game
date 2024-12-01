@@ -5,8 +5,16 @@
 	scroll-behavior: smooth;
 }
 
+@font-face {
+	font-family: 'Better-VCR';
+	src: url('../fonts/Better-VCR.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
 body {
 	height: 100%;
+	font-family: 'Better-VCR';
 }
 
 .terminal-wrapper {
@@ -15,6 +23,7 @@ body {
 	align-items: center;
 	justify-content: center;
 	height: 100vh;
+	font-family: 'Better-VCR';
 }
 
 .terminal-container {
@@ -27,11 +36,10 @@ body {
 .welcome-message {
 	color: white;
 	font-size: 20px;
-	font-family: monospace;
+	
 }
 
 .terminal-header {
-	font-family: monospace;
 	font-size: 20px;
 	padding: 10px;
 	margin: 20px;
@@ -56,7 +64,6 @@ body {
 	font-size: 17px;
 	padding: 15px;
 	line-height: 25px;
-	font-family: monospace;
 }
 
 .menuOptions .menu-text {
@@ -78,7 +85,7 @@ body {
 	border-left: none;
 	border-right: none;
 	outline: none;
-	font-family: monospace;
+	font-family: 'Better-VCR';
 	font-size: small;
 	width: 70%;
 }

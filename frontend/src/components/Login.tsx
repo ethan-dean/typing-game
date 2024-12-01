@@ -87,14 +87,33 @@ function Login()
             navigate('/sign-up');
         }
     }
+    
+    const ships = Array.from({ length: 5 }, (_, index) => (
+        <div key={index} className="playerShip" style={{ top: `${100 - index * 20}vh`, left: `${Math.random() * 100}vw` }}></div>
+    ));
+    
+    const bugs1 = Array.from({ length: 3 }, (_, index) => (
+        <div key={index} className="bugs1" style={{ top: `${100 - index * 30}vh`, left: `${Math.random() * 100}vw` }}></div>
+    ));
+    
+    const bugs2 = Array.from({ length: 3 }, (_, index) => (
+        <div key={index} className="bugs2" style={{ top: `${100 - index * 40}vh`, left: `${Math.random() * 100}vw` }}></div>
+    ));
+
+    const bugs3 = Array.from({ length: 3 }, (_, index) => (
+        <div key={index} className="bugs3" style={{ top: `${100 - index * 50}vh`, left: `${Math.random() * 100}vw` }}></div>
+    ));
 
     return(
-    
-     <div className="container">
+    <div className="container">
         <section className="wrapper">
             <div id='star1'></div>
             <div id='star2'></div>
             <div id='star3'></div>
+            {ships}
+            {bugs1}
+            {bugs2}
+            {bugs3}
         </section>
         <div className="login-container">
             <div className="tabs-container">

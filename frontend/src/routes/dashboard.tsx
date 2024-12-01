@@ -76,7 +76,7 @@ function Dashboard()
 		switch (option) {
 			case 'new game':
 				setOutput([...output, 'Starting a new game...']);
-				navigate('/new-game');
+				navigate('dashboard/new-game');
 				break;
 			case 'settings':
 				setOutput(['Navigating to settings...']);

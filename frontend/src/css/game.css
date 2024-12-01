@@ -1,0 +1,76 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+}
+
+@font-face {
+	font-family: 'Better-VCR';
+	src: url('../fonts/Better-VCR.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body {
+	height: 100%;
+	font-family: 'Better-VCR';
+}
+
+.bug-text {
+	color: white;
+	background-color: black;
+	font-size: 12px;
+	position: absolute;
+	width: auto;
+	white-space: nowrap;
+	top: -13px;
+	transform: translateX(-40%);
+	padding: 2px 5px;
+	border-radius: 2px;
+}
+
+.correct {
+	color: rgb(255, 162, 0);
+}
+
+.bug {
+	position: absolute;
+	width: 24px;
+	height: 24px;
+	background: url('/assets/tile007_scaled.png') no-repeat center center;
+	background-size: contain;
+	animation: moveDown 150s linear;
+}
+
+.player-ship {
+	position: absolute;
+	width: 32px;
+	height: 32px;
+	background: url('/assets/tile022_scaled.png') no-repeat center center;
+	background-size: contain;
+	left: 50%;
+	top: 90%;
+}
+
+.projectile {
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	background: url('/assets/projectile012_scaled.png') no-repeat center center;
+	background-size: contain;
+	z-index: 1000;
+}
+
+.stats {
+	color: white;
+}
+@keyframes moveDown {
+	0% {
+		transform: translateY(0);
+	}
+	100% {
+		transform: translateY(100vh);
+	}
+}
+

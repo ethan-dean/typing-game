@@ -561,6 +561,40 @@ html {
     498px 1947px #fff, 617px 880px #fff, 240px 403px #fff;
 }
 
+.playerShip {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: url('../assets/tile022.png') no-repeat center center;
+    background-size: contain;
+    animation: moveUp 30s linear infinite;
+}
+
+.bugs1 {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: url('../assets/tile009.png') no-repeat center center;
+    background-size: contain;
+    animation: moveUp 30s linear infinite;
+}
+.bugs2 {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: url('../assets/tile008.png') no-repeat center center;
+    background-size: contain;
+    animation: moveUp 30s linear infinite;
+}
+
+.bugs3 {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: url('../assets/tile007.png') no-repeat center center;
+    background-size: contain;
+    animation: moveUp 30s linear infinite;
+}
 
 @keyframes animStar {
     from {
@@ -569,4 +603,16 @@ html {
     to {
         transform: translateY(-2000px);
     }
+}
+
+@keyframes moveUp {
+    0% {
+        transform: translateY(100vh);
+      }
+      50% {
+        transform: translateY(0vh);
+      }
+      100% {
+        transform: translateY(-120vh);
+      }
 }
