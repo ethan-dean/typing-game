@@ -13,7 +13,7 @@ const url = "mongodb+srv://Wesley:uhsPa6lUo63zxGqW@cluster0.6xjnj.mongodb.net/?r
 const client = new MongoClient(url);
 client.connect();
 
-const port = 5000;
+const port = 5060;
 const app = express();
 app.set('trust proxy', 1);
 app.use(cors({
@@ -27,18 +27,39 @@ app.post('/api/signup', async (req: any, res: any, next: any) =>
 {
     // Incoming: First name, Last name, Login, Password
     // Outgoing: id, error
-    
-    const {firstName, lastName, email, login, password} = req.body;
-    const newUser = {FirstName: firstName, LastName: lastName, Email: email, Login: login, Password: password};
+
+    const score = 0;
+	const highScore = 0;
+	const wordsPerMinute = 0;
+	const totalWordsTyped = 0;
+	const accuracy = 0;
+	const levelsCompleted = 0;
+
+    const { firstName, lastName, email, login, password } = req.body;
+    const newUser =	{ 
+		FirstName: firstName,
+		LastName: lastName,
+		Email: email,
+		Login: login,
+		Pasword: password,
+		PlayerData: {
+		  Score: score,
+		  HighScore: highScore,
+		  WordsPerMinute: wordsPerMinute,
+		  TotalWordsTyped: totalWordsTyped,
+		  Accuracy: accuracy,
+		  LevelsCompleted: levelsCompleted
+		}
+	};
     
     const db = client.db("LargeProject");
-    const existingUser = await db.collection('Users').findOne({ Login: login });
+    const existingUser = await db.collection('TestUsers').findOne({ Login: login });
     
     if (existingUser) {
         return res.status(300).json({ error: 'User with this login already exists' });
     }
     
-    const result = await db.collection('Users').insertOne(newUser);
+    const result = await db.collection('TestUsers').insertOne(newUser);
     
     // Send the newly created user's ID
     res.status(200).json(
@@ -50,26 +71,20 @@ app.post('/api/signup', async (req: any, res: any, next: any) =>
 
 app.post('/api/login', async (req: any, res: any, next: any) => 
 {
-    const { login, password } = req.body;
-    
-    const db = client.db("LargeProject");
-    const user = await db.collection('Users').findOne({ Login: login, Password: password });
-    
-    if (!user) {
+	const { login, password } = req.body;
+
+	const db = client.db("LargeProject");
+	const user = await db.collection("TestUsers").findOne({Login: login, Password: password});
+
+	if(!user) {
         return res.status(400).json({ error: 'Invalid login or password' });
     }
 
-    const userInfo = { 
-        id: user._id,
-    };
-
-    const accessToken = jwt.sign(userInfo, process.env.ACCESS_TOKEN_SECRET)
-    
-    //send user info if login is successful.
-    res.status(200).json({ 
-        id: user._id,
-        accessToken: accessToken
-    });
+	res.status(200).json(
+		{
+			id: user._id
+		}
+	)
 });
 
 app.post('/api/getUser', async (req: any, res: any, next: any) => 
@@ -79,7 +94,7 @@ app.post('/api/getUser', async (req: any, res: any, next: any) =>
 	var objectId = ObjectId.createFromHexString(id)
 
 	const db = client.db("LargeProject");
-    const user = await db.collection('Users').findOne({ _id: objectId });
+    const user = await db.collection('TestUsers').findOne({ _id: objectId });
 
 	if (!user) {
         return res.status(400).json({ error: 'User with the given id does not exist' });
@@ -98,19 +113,21 @@ app.post('/api/getPlayerData', async (req: any, res: any, next: any) => {
 	var objectId = ObjectId.createFromHexString(id)
 
 	const db = client.db("LargeProject");
-    const user = await db.collection('PlayerData').findOne({ _id: objectId });
-
+    const user = await db.collection('TestUsers').findOne({ _id: objectId });
+	
 	if (!user) {
         return res.status(400).json({ error: 'User with the given id does not exist' });
     }
 
 	res.status(200).json({
-		score: user.score,
-		highscore: user.highScore,
-		wordsPerMinute: user.wordsPerMinute,
-		totalWordsTyped: user.totalWordsTyped,
-		accuracy: user.accuracy,
-		levelsCompleted: user.levelsCompleted
+		login: user.Login,
+		name: `${user.FirstName} ${user.LastName}`,
+		score: user.PlayerData.Score,
+		wordsPerMinute: user.PlayerData.WordsPerMinute,
+		highscore: user.PlayerData.HighScore,
+		totalWordsTyped: user.PlayerData.TotalWordsTyped,
+		accuracy: user.PlayerData.Accuracy,
+		levelsCompleted: user.PlayerData.LevelsCompleted
 	});
 })
 
